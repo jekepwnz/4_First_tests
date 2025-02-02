@@ -1,6 +1,4 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class JUnitExamples {
 
@@ -13,6 +11,16 @@ public class JUnitExamples {
     void beforeEach() {
         System.out.println("    Some action before each test");
     }
+    @AfterEach
+    void afterEach() {
+        System.out.println("        Message after each test");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("All tests done");
+    }
+
 
     @Test
     void firstTest() {
