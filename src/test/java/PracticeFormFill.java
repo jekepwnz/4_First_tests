@@ -1,10 +1,10 @@
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.selector.ByText;
-import org.junit.jupiter.api.Test;
 
 public class PracticeFormFill {
 
@@ -13,7 +13,8 @@ public class PracticeFormFill {
 
         //arranges
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1280x1024";
+
 
         //variables for test
         String name = "Eugene";
@@ -21,7 +22,7 @@ public class PracticeFormFill {
         String email = "egp@gmail.com";
         String gender = "Male";
         String number = "9998791234";
-        String dateOfBirth = "07 March,1990";
+        String dateOfBirth = "25 March,1990";
         String[] hobbys = new String[2];
         hobbys[0] = "Sports";
         hobbys[1] = "Music";
@@ -33,21 +34,21 @@ public class PracticeFormFill {
 
         //actions
         open("https://demoqa.com/automation-practice-form");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue(name);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
-        $("#gender-radio-1").parent().click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue(number);
-        $(".react-datepicker__input-container").click();
-        $(".react-datepicker__month-select").click();
-        $(byText("March")).click();
-        $(".react-datepicker__year-select").$(byText("1990")).click();
-        $(".react-datepicker__month").$(byText("7")).click();
-        $("#subjectsContainer").click();
-        $("#subjectsInput").setValue(subject);
-        $("#react-select-2-option-0").click();
-        for(int i = 0; i < 2; i ++){
-            $(byText(hobbys[i])).hover().click();
+
+        $(".react-datepicker__input-container").scrollIntoView(true).click();
+        $(".react-datepicker__month-select").selectOption("March");
+        $(".react-datepicker__year-select").selectOption("1990");
+        $$(".react-datepicker__day:not(.react-datepicker__day--outside-month)")
+                .findBy(text("25")).click();
+        $("#subjectsInput").setValue(subject).pressEnter();
+        for (int i = 0; i < 2; i++) {
+            $("#hobbiesWrapper").$(byText(hobbys[i])).hover().click();
         }
 
         $("#uploadPicture").uploadFromClasspath(picture);
@@ -58,15 +59,16 @@ public class PracticeFormFill {
         $("#city").$(byText(city)).click();
         $("#submit").click();
 
-
-        //assertions
+        //asserts
+        $("div.modal-dialog").should(appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(byText("Student Name")).sibling(0).shouldHave(text(name), text(lastName));
         $(byText("Student Email")).sibling(0).shouldHave(text(email));
-        $(byText("Gender")).sibling(0).shouldHave(text(gender));
+        $(byText("Gender")).sibling(0).scrollIntoView(true).shouldHave(text(gender));
         $(".modal-body").$(byText("Mobile")).sibling(0).shouldHave(text(number));
         $(".modal-body").$(byText("Date of Birth")).sibling(0).shouldHave(text(dateOfBirth));
 
-        for(int i = 0; i < 1; i ++){
+        for (int i = 0; i < 1; i++) {
             $(".modal-body").$(byText("Hobbies")).sibling(i).shouldHave(text(hobbys[i]));
         }
         $(".modal-body").$(byText("Picture")).sibling(0).shouldHave(text(picture));
