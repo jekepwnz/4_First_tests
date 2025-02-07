@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -9,6 +10,7 @@ public class EnterprisePageCheck {
 
     @Test
     void enterprisePageAvailable() {
+        Configuration.browserSize = "1920x1090";
         open("https://github.com/");
         $(".HeaderMenu-nav").$("ul").$(byText(("Solutions"))).hover();
         $(byText("By company size")).parent().$(byText("Enterprises")).click();
