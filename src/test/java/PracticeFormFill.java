@@ -1,20 +1,20 @@
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.devtools.v131.filesystem.model.File;
-
-import java.lang.reflect.Array;
 
 public class PracticeFormFill {
 
     @Test
     void formFill() {
+
+        //arranges
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
+
+        //variables for test
         String name = "Eugene";
         String lastName = "Park";
         String email = "egp@gmail.com";
@@ -30,9 +30,7 @@ public class PracticeFormFill {
         String address = "Hello! its my address here :)";
         String subject = "History";
 
-
-
-
+        //actions
         open("https://demoqa.com/automation-practice-form");
         $("#firstName").setValue(name);
         $("#lastName").setValue(lastName);
@@ -57,7 +55,8 @@ public class PracticeFormFill {
         $("#city").$(byText(city)).click();
         $("#submit").click();
 
-        //todo assertions
+
+        //assertions
         $(byText("Student Name")).sibling(0).shouldHave(text(name), text(lastName));
         $(byText("Student Email")).sibling(0).shouldHave(text(email));
         $(byText("Gender")).sibling(0).shouldHave(text(gender));
