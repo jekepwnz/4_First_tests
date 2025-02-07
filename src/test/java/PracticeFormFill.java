@@ -3,6 +3,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.Test;
 
 public class PracticeFormFill {
@@ -45,8 +46,10 @@ public class PracticeFormFill {
         $("#subjectsContainer").click();
         $("#subjectsInput").setValue(subject);
         $("#react-select-2-option-0").click();
-        $("#hobbies-checkbox-1").parent().click();
-        $("#hobbies-checkbox-3").parent().click();
+        for(int i = 0; i < 2; i ++){
+            $(byText(hobbys[i])).hover().click();
+        }
+
         $("#uploadPicture").uploadFromClasspath(picture);
         $("#currentAddress").setValue(address);
         $("#state").click();
