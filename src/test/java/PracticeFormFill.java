@@ -4,6 +4,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.devtools.v131.filesystem.model.File;
 
 public class PracticeFormFill {
 
@@ -26,8 +27,17 @@ public class PracticeFormFill {
         $("#subjectsContainer").click();
         $("#subjectsInput").setValue("Histo");
         $("#react-select-2-option-0").click();
-        //todo fill hobbies and next
+        $("#hobbies-checkbox-1").parent().click();
+        $("#hobbies-checkbox-3").parent().click();
+        $("#uploadPicture").uploadFromClasspath("exmaple_file.png");
+        $("#currentAddress").setValue("Hello! its my address here :)");
+        $("#state").click();
+        $(byText("NCR")).click();
+        $("#city").click();
+        $("#city").$(byText("Gurgaon")).click();
+        $("#submit").click();
 
+        //todo assertions
 
     }
 }
