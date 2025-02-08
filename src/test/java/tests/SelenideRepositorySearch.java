@@ -1,6 +1,5 @@
-import com.codeborne.selenide.Browser;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.conditions.Text;
+package tests;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
