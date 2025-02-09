@@ -10,22 +10,22 @@ public class PracticeFormWithPageObjects extends TestBase {
     void succecfullRegistrationTest() {
 
         //variables for test
-        String name = "Eugene";
-        String lastName = "Park";
-        String email = "egp@gmail.com";
-        String gender = "Male";
-        String number = "9998791234";
-        String birthDay = "25";
-        String birthMonth = "March";
-        String birthYear = "1990";
+        String name = "Eugene",
+                lastName = "Park",
+                email = "egp@gmail.com",
+                gender = "Male",
+                number = "9998791234",
+                birthMonth = "March",
+                birthDay = "25",
+                birthYear = "1990",
+                picture = "example_file.png",
+                state = "NCR",
+                city = "Gurgaon",
+                address = "Hello! its my address here :)",
+                subject = "History";
         String[] hobbies = new String[2];
         hobbies[0] = "Sports";
         hobbies[1] = "Music";
-        String picture = "example_file.png";
-        String state = "NCR";
-        String city = "Gurgaon";
-        String address = "Hello! its my address here :)";
-        String subject = "History";
 
         //actions
         registrationPage.openPage()
