@@ -23,9 +23,8 @@ public class PracticeFormWithPageObjects extends TestBase {
                 city = "Gurgaon",
                 address = "Hello! its my address here :)",
                 subject = "History";
-        String[] hobbies = new String[2];
-        hobbies[0] = "Sports";
-        hobbies[1] = "Music";
+        String[] hobbies = {"Sports", "Music"};
+
 
         //actions
         registrationPage.openPage()
