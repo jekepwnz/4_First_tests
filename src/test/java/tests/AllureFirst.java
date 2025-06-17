@@ -1,18 +1,17 @@
 package tests;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-@DisplayName("Тесты на общую форму")
-public class PracticeFormWithPageObjects extends TestBase {
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Selenide.*;
+import static org.openqa.selenium.By.linkText;
+
+public class AllureFirst extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-
     @Test
-    @DisplayName("Успешная регистрация")
-    void succecfullRegistrationTest() {
-
-        //variables for test
+    public void issueSearchTest(){
         String name = "Eugene",
                 lastName = "Park",
                 email = "egp@gmail.com",
@@ -50,7 +49,7 @@ public class PracticeFormWithPageObjects extends TestBase {
                 .verifyResult("Student Name", name + " " + lastName)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
-                .verifyResult("Mobile", number)
+                .verifyResult("Mobile1", number)
                 .verifyResult("Date of Birth", birthDay + " " + birthMonth + "," + birthYear)
                 .verifyResult("Subjects", subject);
         for (String hobby : hobbies) {
@@ -60,6 +59,5 @@ public class PracticeFormWithPageObjects extends TestBase {
                 .verifyResult("Address", address)
                 .verifyResult("State and City", state + " " + city);
 
-    }
-
+     }
 }
