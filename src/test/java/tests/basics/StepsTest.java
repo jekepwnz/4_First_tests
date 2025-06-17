@@ -69,7 +69,7 @@ public class StepsTest {
             $("#state").click();
             $(byText(state)).click();
             $("#city").click();
-            $("#city").$(byText(city)).click();
+            $("#city").$(byText(city)).scrollIntoView(true).click();
         });
 
         step("Нажимаем кнопку отправить", () -> {
