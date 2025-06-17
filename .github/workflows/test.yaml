@@ -30,8 +30,9 @@ jobs:
           ref: gh-pages
           path: gh-pages
       # генерируем отчёт
-      - uses: ./allure-report-action
+      - uses: simple-elf/allure-report-action@master
         if: always()
+        id: allure-report
         with:
           allure_results: build/allure-results
           gh_pages: gh-pages
