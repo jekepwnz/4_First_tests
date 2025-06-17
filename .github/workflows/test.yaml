@@ -17,5 +17,8 @@ jobs:
           java-version: '17'
       #даем права на запуск
       - run: chmod +x gradlew
+      #добавляем селеноид
+      - uses: Xotabu4/selenoid-github-action@v2
+
       #запуск тестов
-      - run: ./gradlew clean test
+      - run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
