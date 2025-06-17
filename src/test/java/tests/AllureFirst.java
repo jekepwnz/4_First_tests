@@ -49,7 +49,7 @@ public class AllureFirst extends TestBase {
                 .verifyResult("Student Name", name + " " + lastName)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
-                .verifyResult("Mobile1", number)
+                .verifyResult("Mobile", number)
                 .verifyResult("Date of Birth", birthDay + " " + birthMonth + "," + birthYear)
                 .verifyResult("Subjects", subject);
         for (String hobby : hobbies) {
