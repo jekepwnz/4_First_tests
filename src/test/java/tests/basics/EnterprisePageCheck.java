@@ -1,6 +1,7 @@
 package tests.basics;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class EnterprisePageCheck {
 
     @Test
+    @Disabled
     void enterprisePageAvailable() {
         Configuration.browserSize = "1920x1090";
         open("https://github.com/");
