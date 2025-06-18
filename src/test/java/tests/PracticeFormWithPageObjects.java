@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -11,7 +13,7 @@ public class PracticeFormWithPageObjects extends TestBase {
     @Test
     @DisplayName("Успешная регистрация")
     void succecfullRegistrationTest() {
-
+        SelenideLogger.addListener("allure", new AllureSelenide());
         //variables for test
         String name = "Eugene",
                 lastName = "Park",
